@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import ThemeToggle from "@/components/theme-toggle"
 import { motion } from "framer-motion"
 
 export function Header() {

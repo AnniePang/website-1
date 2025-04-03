@@ -195,7 +195,7 @@ export default function Home() {
                       <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400">
                         <li>
                           Filtered 120 million data points with 30 attributes of customer behaviors and purchase history
-                          from Amazon Go and Fresh "Just Walk Out" technology using SQL.
+                          from Amazon Go and Fresh &quot;Just Walk Out&quot; technology using SQL.
                         </li>
                         <li>
                           Created an automated ETL pipeline with a weekly schedule to extract and store metrics from the
@@ -238,7 +238,7 @@ export default function Home() {
                       <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400">
                         <li>
                           Provided IT asset inventory data analysis for the IT Asset Management Team; Generated
-                          statistical reports and dashboards using SQL, increased team's reports' efficiency by ~10% &
+                          statistical reports and dashboards using SQL, increased team&apos;s reports&apos; efficiency by ~10% &
                           supported renewable energy investment ideas.
                         </li>
                         <li>
@@ -582,7 +582,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                    Developed a deep learning model using Google's TensorFlow to optimize military fuel logistics
+                    Developed a deep learning model using Google&apos;s TensorFlow to optimize military fuel logistics
                     networks, enabling rapid assessment of candidate flow plans against risk factors that traditional
                     optimization methods struggle to accommodate.
                   </p>
@@ -1211,7 +1211,7 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="text-slate-900 dark:text-white">Send Me a Message</CardTitle>
                   <CardDescription className="dark:text-slate-400">
-                    Fill out the form below and I'll get back to you as soon as possible.
+                    Fill out the form below and I&apos;ll get back to you as soon as possible.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
