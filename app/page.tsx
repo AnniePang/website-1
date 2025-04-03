@@ -410,7 +410,7 @@ export default function Home() {
                   <ul className="text-sm text-slate-600 dark:text-slate-400 list-disc pl-5 mt-1">
                     <li>Achieved baseline BLEU scores for low-resource language</li>
                     <li>Deployed models via AWS and Hugging Face</li>
-                    <li>Created scalable academic and public engagement interface using Reach and Restful API</li>
+                    <li>Created scalable academic and public engagement interface using React and Fast API</li>
                   </ul>
                 </CardContent>
                 <CardFooter className="pt-0">
@@ -907,7 +907,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="other" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Jira", "Confluence", "Git", "Docker", "Agile", "ETL", "Data Visualization"].map((skill) => (
+                  {["Jira", "Confluence", "Git", "Docker", "Agile", "ETL", "Data Visualization", "React", "Fast API"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
