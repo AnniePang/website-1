@@ -387,8 +387,7 @@ export default function Home() {
                 <CardContent className="flex-grow">
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                     Developed a neural machine translation pipeline leveraging transformer models (T5, mT5, NLLB) and
-                    custom RNN/Transformer architectures to translate 500k+ low-resource ancient cuneiform texts. and
-                    custom RNN/Transformer architectures to translate 500k+ low-resource ancient cuneiform texts.
+                    custom RNN/Transformer architectures to translate 500k+ low-resource ancient cuneiform texts. 
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
@@ -411,7 +410,7 @@ export default function Home() {
                   <ul className="text-sm text-slate-600 dark:text-slate-400 list-disc pl-5 mt-1">
                     <li>Achieved baseline BLEU scores for low-resource language</li>
                     <li>Deployed models via AWS and Hugging Face</li>
-                    <li>Created scalable academic and public engagement interface</li>
+                    <li>Created scalable academic and public engagement interface using Reach and Restful API</li>
                   </ul>
                 </CardContent>
                 <CardFooter className="pt-0">
@@ -1333,7 +1332,7 @@ export default function Home() {
                       asChild
                     >
                       <a
-                        href="https://drive.google.com/file/d/1wl4t74C0diZKkinpreI0-o1gIVE6LWDB/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1gxTW_PbTfqmEmZxniHR1Y_Bw5e7I5CrZ/view?usp=sharing"
                         target="_blank"
                         download
                         rel="noreferrer"

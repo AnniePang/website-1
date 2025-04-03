@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Inter } from 'next/font/google';
@@ -16,9 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <Head>
         <link rel="icon" href="/favicon.ico" />
-      </head>
+        </Head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
