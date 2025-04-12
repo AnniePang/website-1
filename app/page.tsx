@@ -362,9 +362,9 @@ export default function Home() {
 
           <motion.div
             variants={staggerContainer(0.1, 0.2)}
-            initial="hidden"
+            initial="show"
             whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.1 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             {/* Project 1: AI-Driven Cuneiform Translation */}
