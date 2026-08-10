@@ -53,9 +53,9 @@ export default function Home() {
                 Data Scientist | Machine Learning Engineer | Product Manager
               </p>
               <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
-                UC Berkeley graduate with expertise in machine learning, data analysis, and product management.
-                Experienced in developing AI solutions and data-driven insights for companies like Delta Air Lines,
-                Amazon, Tesla, and Pfizer.
+                UC Berkeley graduate with expertise in machine learning, data engineering, and product management.
+                Currently a Business Intelligence Engineer at Amazon, building automated data pipelines and AI-powered
+                tools. Previously at Delta Air Lines, Tesla, and Pfizer.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button
@@ -113,8 +113,59 @@ export default function Home() {
             viewport={{ once: true, amount: 0.1 }}
             className="space-y-8"
           >
-            {/* Experience 1 */}
+            {/* Experience 1 - Amazon Full-Time */}
             <motion.div variants={fadeIn("up", 0.3)}>
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800">
+                <div className="flex flex-col md:flex-row">
+                  <div className="md:w-1/4 bg-slate-100 dark:bg-slate-800">
+                    <div className="relative h-48 md:h-full">
+                      <Image src="/amazon new.png" alt="Amazon" fill className="object-contain p-4" />
+                    </div>
+                  </div>
+                  <div className="md:w-3/4">
+                    <CardHeader>
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                          <CardTitle className="text-slate-900 dark:text-white">Business Intelligence Engineer</CardTitle>
+                          <CardDescription className="dark:text-slate-400">Amazon, Inc.</CardDescription>
+                        </div>
+                        <Badge className="w-fit bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200">
+                          Jan 2024 - Present
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400">
+                        <li>
+                          Engineer an automated inventory reserve calculation system in Python (Pandas, NumPy) and SQL on AWS (Glue, S3,
+                          Redshift, Athena), gathering requirements from Finance stakeholders to process device pricing data across 12 global
+                          fulfillment centers and 6 geographic regions; replaced manual per-geography rate lookups with a uniform
+                          cost-per-replacement framework, reducing 48+ hours of manual calculations to minutes of automated runtime.
+                        </li>
+                        <li>
+                          Build and deploy a domain-specific LLM agent (Claude, MCP tool integrations) for the Devices &amp; Kuiper finance
+                          workstream, curating an 18-document runbook knowledge base to ground responses across 10+ month-end close processes,
+                          reducing stakeholder questions and oncall debugging time by 5 hours.
+                        </li>
+                        <li>
+                          Design and automate end-to-end ETL/ELT pipelines using Apache Airflow-based orchestration and AWS services (S3,
+                          Redshift, Athena) to process 120M+ data points, engineering 30 features for Sponsored Ads models; deployed through
+                          CI/CD pipelines with automated beta/production validation, resulting in a 1M+ cumulative increase in campaign revenue.
+                        </li>
+                        <li>
+                          Spearhead the development of 5+ self-serve BI dashboards (AWS QuickSight) defining and monitoring KPIs for
+                          advertising performance across online and in-store channels, empowering 100+ business stakeholders to make
+                          data-driven decisions and reducing ad-hoc data requests by 70%.
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Experience 2 - Delta */}
+            <motion.div variants={fadeIn("up", 0.35)}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-1/4 bg-slate-100 dark:bg-slate-800">
@@ -142,21 +193,20 @@ export default function Home() {
                     <CardContent>
                       <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400">
                         <li>
-                          Developed supervised learning algorithms (logistic regression and support vector machines)
-                          with an accuracy score of ~80% to train a Google BERT model that classifies documents based on
-                          relevance to a user query.
+                          Designed and executed A/B tests and statistical analyses of passenger inflight experience data,
+                          collaborating with vendors to evaluate product improvements; created Tableau visualizations and
+                          recommendations using Python (NumPy, Pandas) to quantify investment priorities, delivering
+                          recommendations that projected 20% increase in customer satisfaction.
                         </li>
                         <li>
-                          Produced quantitative analysis and data visualizations on Jupyter Notebook in Python (with
-                          libraries of NumPy and Pandas).
+                          Built and evaluated supervised learning models (Logistic Regression and SVM) for BERT-based document
+                          classification and Q&amp;A system for internal customer service, enabling natural language search
+                          capabilities across 10K+ support documents.
                         </li>
                         <li>
-                          Analyzed and provided e-commerce and Internet entertainment/media space recommendations based
-                          on Tableau dashboards.
-                        </li>
-                        <li>
-                          Expected to implement proposed policy changes and increase customer satisfaction score by 20%
-                          by Q4 2023.
+                          Designed experiments and analyzed user feedback for product improvements using statistical methods,
+                          presenting data-driven insights to leadership that influenced UX optimization, resulting in 30%
+                          increase in user satisfaction scores.
                         </li>
                       </ul>
                     </CardContent>
@@ -165,7 +215,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Experience 2 */}
+            {/* Experience 3 - Amazon Intern */}
             <motion.div variants={fadeIn("up", 0.4)}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row">
@@ -213,7 +263,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Experience 3 */}
+            {/* Experience 4 - Tesla */}
             <motion.div variants={fadeIn("up", 0.5)}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row">
@@ -253,7 +303,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Experience 4 */}
+            {/* Experience 5 - Pfizer */}
             <motion.div variants={fadeIn("up", 0.6)}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row">
@@ -302,7 +352,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Experience 5 */}
+            {/* Experience 6 - Noble Profit */}
             <motion.div variants={fadeIn("up", 0.7)}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row">
@@ -367,7 +417,66 @@ export default function Home() {
             viewport={{ once: true, amount: 0.1 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
-            {/* Project 1: AI-Driven Cuneiform Translation */}
+            {/* Project 1: Annie's Little Corner */}
+            <motion.div variants={fadeIn("up", 0.3)}>
+              <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
+                <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
+                  <Image
+                    src="/little-corner.svg"
+                    alt="Annie's Little Corner bilingual learning app"
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-slate-900 dark:text-white">Annie&apos;s Little Corner</CardTitle>
+                  <CardDescription className="dark:text-slate-400">
+                    A calm bilingual learning app for curious adults
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    Currently building an English and Simplified Chinese editorial library with fact-checked learning
+                    cards across Art, Science, and Literature. This work-in-progress responsive experience supports focused
+                    discovery, search, saved cards, reviewed progress, and device-local state without requiring an account.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
+                      Next.js
+                    </Badge>
+                    <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
+                      TypeScript
+                    </Badge>
+                    <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
+                      Bilingual UX
+                    </Badge>
+                    <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
+                      Editorial AI
+                    </Badge>
+                  </div>
+                  <p className="text-sm font-medium dark:text-white">Outcomes:</p>
+                  <ul className="text-sm text-slate-600 dark:text-slate-400 list-disc pl-5 mt-1">
+                    <li>Publishing bilingual cards organized into 9 topic collections</li>
+                    <li>Created responsive category, topic, flashcard, search, saved, and reviewed experiences</li>
+                    <li>Built an agent-assisted editorial workflow with no runtime AI API or recurring model cost</li>
+                  </ul>
+                </CardContent>
+                <CardFooter className="pt-0">
+                  <Button variant="outline" size="sm" className="w-full group" asChild>
+                    <Link
+                      href="https://annies-little-corner.vercel.app/"
+                      target="_blank"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <span>Visit Little Corner</span>
+                      <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
+
+            {/* Project 2: AI-Driven Cuneiform Translation */}
             <motion.div variants={fadeIn("up", 0.3)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -428,7 +537,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Project 2: COPD Analysis */}
+            {/* Project 3: COPD Analysis */}
             <motion.div variants={fadeIn("up", 0.4)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -493,7 +602,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Project 3: Music Genre Classification System */}
+            {/* Project 4: Music Genre Classification System */}
             <motion.div variants={fadeIn("up", 0.5)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -562,7 +671,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Project 4: Fuel Logistics Planning Optimization */}
+            {/* Project 5: Fuel Logistics Planning Optimization */}
             <motion.div variants={fadeIn("up", 0.6)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -627,7 +736,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Project 5: Food Bank Distribution Analysis */}
+            {/* Project 6: Food Bank Distribution Analysis */}
             <motion.div variants={fadeIn("up", 0.7)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -686,7 +795,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Project 6: Elderly Care Innovation Startup Project */}
+            {/* Project 7: Elderly Care Innovation Startup Project */}
             <motion.div variants={fadeIn("up", 0.8)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -743,7 +852,7 @@ export default function Home() {
               </Card>
             </motion.div>
 
-            {/* Project 7: Consulting Case Competition */}
+            {/* Project 8: Consulting Case Competition */}
             <motion.div variants={fadeIn("up", 0.9)}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden">
                 <div className="aspect-video bg-slate-100 dark:bg-slate-700 overflow-hidden relative">
@@ -848,7 +957,7 @@ export default function Home() {
               </TabsList>
               <TabsContent value="programming" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Python", "R", "SQL", "Java", "C++", "HTML/CSS", "JavaScript"].map((skill) => (
+                  {["Python", "R", "SQL", "Java", "C++", "HTML/CSS", "JavaScript", "TypeScript"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -867,7 +976,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="ml" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning"].map(
+                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain"].map(
                     (skill) => (
                       <Card
                         key={skill}
@@ -888,7 +997,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="data" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI"].map((skill) => (
+                  {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI", "Apache Airflow", "AWS Step Functions", "Amazon Redshift", "Amazon Athena"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -907,7 +1016,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="other" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Jira", "Confluence", "Git", "Docker", "Agile", "ETL", "Data Visualization", "React", "Fast API"].map((skill) => (
+                  {["Jira", "Confluence", "Git", "Docker", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -1332,7 +1441,7 @@ export default function Home() {
                       asChild
                     >
                       <a
-                        href="https://drive.google.com/file/d/1gxTW_PbTfqmEmZxniHR1Y_Bw5e7I5CrZ/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1cEVE7GzTf-ElBc66c11qQ-QRwPH9q7lm/view?usp=sharing"
                         target="_blank"
                         download
                         rel="noreferrer"
