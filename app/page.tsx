@@ -49,13 +49,17 @@ export default function Home() {
           >
             <motion.div variants={fadeIn("right", 0.3)} className="md:w-2/3">
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Annie Pang</h1>
-              <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-6">
-                Data Scientist | Machine Learning Engineer | Product Manager
+              <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-2">
+                Business Intelligence Engineer | Data Engineer | Data Scientist | Machine Learning Engineer
+              </p>
+              <p className="text-base text-slate-500 dark:text-slate-400 mb-6">
+                Product-minded analytics &amp; data platform builder · UC Berkeley M.A. in Information and Data Science
               </p>
               <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
-                UC Berkeley graduate with expertise in machine learning, data engineering, and product management.
-                Currently a Business Intelligence Engineer at Amazon, building automated data pipelines and AI-powered
-                tools. Previously at Delta Air Lines, Tesla, and Pfizer.
+                Business Intelligence Engineer at Amazon owning end-to-end analytics and data platform work for Devices
+                and Leo satellite-internet finance &mdash; defining KPIs, modeling Redshift datasets, operating ETL/ELT
+                pipelines over 120M+ records, running experiments and statistical analysis, and shipping production ML
+                and GenAI systems. Previously at Delta Air Lines, Tesla, and Pfizer.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button
@@ -101,6 +105,119 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Role Tracks Section */}
+      <section id="roles" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle
+            title="Role Tracks"
+            subtitle="How my experience maps to Business Intelligence, Data Engineering, Data Science, and Machine Learning Engineering"
+          />
+
+          <motion.div
+            variants={staggerContainer(0.1, 0.15)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            {[
+              {
+                abbr: "BIE",
+                title: "Business Intelligence Engineer",
+                delay: 0.3,
+                summary:
+                  "Own end-to-end analytics for Amazon Devices and Leo satellite-internet finance — defining and instrumenting KPIs, modeling reporting datasets, and automating Weekly Business Review reporting for senior leadership.",
+                chips: [
+                  "150+ KPIs across US, EU, and APAC",
+                  "5+ self-serve QuickSight dashboards",
+                  "70% reduction in ad-hoc data requests",
+                  "100+ business stakeholders served",
+                  "Dimensional modeling for reporting",
+                  "Source-of-truth reconciliation",
+                ],
+              },
+              {
+                abbr: "DE",
+                title: "Data Engineer",
+                delay: 0.35,
+                summary:
+                  "Build and own production ETL/ELT pipelines and dimensional data models on AWS over 120M+ records — requirements through orchestration, data-quality monitoring, governance, and query performance tuning.",
+                chips: [
+                  "ETL/ELT on AWS Glue, S3, Redshift, Athena",
+                  "DAG orchestration & idempotent partitioned refresh",
+                  "Spark SQL on managed Spark/EMR",
+                  "Star schema, fact/dimension, and SCD design",
+                  "Redshift MPP and Athena/Trino query optimization",
+                  "SOX-scoped data governance and audit controls",
+                  "CI/CD with staged promotion and rollback",
+                ],
+              },
+              {
+                abbr: "DS",
+                title: "Data Scientist",
+                delay: 0.4,
+                summary:
+                  "Turn 120M+ record datasets into decisions through randomized experiments, causal effect estimation, statistical modeling, and ML feature development — then translate results for non-technical leadership.",
+                chips: [
+                  "A/B testing and experimental design",
+                  "Causal effect estimation from randomized experiments",
+                  "Bayesian and frequentist GLMs",
+                  "Hypothesis testing, regression, posterior inference",
+                  "30 features for Sponsored Ads ranking models",
+                  "$1M+ cumulative campaign revenue impact",
+                  "Berkeley M.A. in Information and Data Science",
+                ],
+              },
+              {
+                abbr: "MLE",
+                title: "Machine Learning Engineer",
+                delay: 0.45,
+                summary:
+                  "Build production ML data systems — offline feature pipelines powering ad ranking models, transformer fine-tuning and model serving, and a production LLM agent with retrieval grounding.",
+                chips: [
+                  "Offline feature pipelines over 120M+ events",
+                  "Transformer fine-tuning (T5, mT5, NLLB)",
+                  "Custom BPE tokenizer training",
+                  "FastAPI and Hugging Face model serving",
+                  "Production LLM agent (Claude, 14 MCP tool servers)",
+                  "PyTorch, TensorFlow, Scikit-Learn",
+                ],
+              },
+            ].map((track) => (
+              <motion.div key={track.abbr} variants={fadeIn("up", track.delay)}>
+                <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 shrink-0 rounded-full bg-slate-800 dark:bg-slate-700 flex items-center justify-center">
+                        <span className="text-xs font-bold text-white">{track.abbr}</span>
+                      </div>
+                      <div>
+                        <CardTitle className="text-slate-900 dark:text-white">{track.title}</CardTitle>
+                        <CardDescription className="dark:text-slate-400">Qualified across this track</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">{track.summary}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {track.chips.map((chip) => (
+                        <Badge
+                          key={chip}
+                          variant="outline"
+                          className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300"
+                        >
+                          {chip}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Experience Section (Moved before Projects) */}
       <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto">
@@ -137,25 +254,40 @@ export default function Home() {
                     <CardContent>
                       <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400">
                         <li>
-                          Engineer an automated inventory reserve calculation system in Python (Pandas, NumPy) and SQL on AWS (Glue, S3,
-                          Redshift, Athena), gathering requirements from Finance stakeholders to process device pricing data across 12 global
-                          fulfillment centers and 6 geographic regions; replaced manual per-geography rate lookups with a uniform
-                          cost-per-replacement framework, reducing 48+ hours of manual calculations to minutes of automated runtime.
+                          Own end-to-end analytics for advertising and device-finance reporting &mdash; defining and
+                          instrumenting 150+ KPIs across US, EU, and APAC, delivering 5+ self-serve AWS QuickSight
+                          dashboards, and automating Weekly Business Review reporting for 100+ stakeholders including
+                          senior leadership, cutting ad-hoc data requests by 70%.
                         </li>
                         <li>
-                          Build and deploy a domain-specific LLM agent (Claude, MCP tool integrations) for the Devices &amp; Kuiper finance
-                          workstream, curating an 18-document runbook knowledge base to ground responses across 10+ month-end close processes,
-                          reducing stakeholder questions and oncall debugging time by 5 hours.
+                          Model and own production Redshift datasets for device inventory valuation &mdash; replacing
+                          manual per-geography rate lookups with a unified cost-per-replacement model and a multi-level
+                          pricing fallback hierarchy across 12 global fulfillment centers and 6 geographic regions,
+                          reducing 48+ hours of manual calculation to minutes of automated runtime over 120M+ records.
                         </li>
                         <li>
-                          Design and automate end-to-end ETL/ELT pipelines using Apache Airflow-based orchestration and AWS services (S3,
-                          Redshift, Athena) to process 120M+ data points, engineering 30 features for Sponsored Ads models; deployed through
-                          CI/CD pipelines with automated beta/production validation, resulting in a 1M+ cumulative increase in campaign revenue.
+                          Design and operate end-to-end ETL/ELT pipelines on AWS (Glue, S3, Redshift, Athena) with DAG
+                          orchestration and Spark SQL transforms on managed Spark/EMR &mdash; partitioned idempotent
+                          refresh, joins pushed into Redshift MPP SQL, and staged CI/CD promotion with automated
+                          beta/production validation and rollback.
                         </li>
                         <li>
-                          Spearhead the development of 5+ self-serve BI dashboards (AWS QuickSight) defining and monitoring KPIs for
-                          advertising performance across online and in-store channels, empowering 100+ business stakeholders to make
-                          data-driven decisions and reducing ad-hoc data requests by 70%.
+                          Partner with Finance and Ad Sales to translate ambiguous business questions into measurable
+                          analyses, running statistical analysis across 120M+ behavioral events and building offline
+                          feature pipelines that engineer 30 features from purchase-history and browsing-behavior signals
+                          for Sponsored Ads ranking and targeting models, contributing a $1M+ cumulative increase in
+                          campaign revenue.
+                        </li>
+                        <li>
+                          Build data-quality and lineage controls for SOX-scoped financial reporting &mdash; assertions
+                          that block malformed loads, reconciliation against source-of-truth ledgers, and completeness
+                          monitoring &mdash; and own production on-call for reporting integrity in a SOX-controlled
+                          production environment.
+                        </li>
+                        <li>
+                          Ship a production GenAI analytics agent (Claude with 14 MCP tool servers spanning Redshift,
+                          ETL orchestration, and QuickSight) grounded on an 18-document knowledge base, cutting on-call
+                          debugging time by 5 hours/month across 10+ recurring month-end financial reporting processes.
                         </li>
                       </ul>
                     </CardContent>
@@ -495,8 +627,10 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                    Developed a neural machine translation pipeline leveraging transformer models (T5, mT5, NLLB) and
-                    custom RNN/Transformer architectures to translate 500k+ low-resource ancient cuneiform texts. 
+                    Built an end-to-end training and serving pipeline over 500k+ low-resource ancient cuneiform texts
+                    &mdash; corpus preprocessing, custom BPE tokenizer training, and transformer fine-tuning (T5, mT5,
+                    NLLB) against RNN/Transformer baselines &mdash; then deployed the trained models via Hugging Face and
+                    AWS behind a React/FastAPI inference interface.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
@@ -929,7 +1063,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.25 }}
           >
             <Tabs defaultValue="programming" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-8">
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 h-auto gap-1 mb-8">
                 <TabsTrigger
                   value="programming"
                   className="data-[state=active]:bg-slate-800 data-[state=active]:text-white dark:data-[state=active]:bg-slate-700"
@@ -947,6 +1081,12 @@ export default function Home() {
                   className="data-[state=active]:bg-slate-800 data-[state=active]:text-white dark:data-[state=active]:bg-slate-700"
                 >
                   Data Tools
+                </TabsTrigger>
+                <TabsTrigger
+                  value="statistics"
+                  className="data-[state=active]:bg-slate-800 data-[state=active]:text-white dark:data-[state=active]:bg-slate-700"
+                >
+                  Statistics
                 </TabsTrigger>
                 <TabsTrigger
                   value="other"
@@ -976,7 +1116,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="ml" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain"].map(
+                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain", "Transformers / BERT", "Hugging Face", "Feature Engineering", "Random Forests", "Model Evaluation"].map(
                     (skill) => (
                       <Card
                         key={skill}
@@ -997,7 +1137,26 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="data" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI", "Apache Airflow", "AWS Step Functions", "Amazon Redshift", "Amazon Athena"].map((skill) => (
+                  {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI", "Apache Airflow", "AWS Step Functions", "Amazon Redshift", "Amazon Athena", "AWS Glue", "Spark SQL"].map((skill) => (
+                    <Card
+                      key={skill}
+                      className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
+                    >
+                      <CardContent className="flex flex-col items-center justify-center p-0">
+                        <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-2">
+                          <span className="text-xl font-bold text-slate-700 dark:text-slate-300">
+                            {skill.charAt(0)}
+                          </span>
+                        </div>
+                        <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+              <TabsContent value="statistics" className="mt-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                  {["A/B Testing", "Experimental Design", "Causal Inference", "Hypothesis Testing", "Bayesian GLMs", "Regression Analysis", "Cohort Analysis", "Confidence Intervals", "KPI Definition"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -1016,7 +1175,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="other" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Jira", "Confluence", "Git", "Docker", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js"].map((skill) => (
+                  {["Jira", "Confluence", "Git", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js", "Dimensional Modeling", "SOX Data Governance", "MCP Tool Servers", "Production On-Call"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"

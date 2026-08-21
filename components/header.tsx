@@ -33,6 +33,12 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
+              href="#roles"
+              className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
+            >
+              Roles
+            </Link>
+            <Link
               href="#experience"
               className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
             >
@@ -113,6 +119,13 @@ export function Header() {
           className="md:hidden bg-white dark:bg-slate-900 shadow-lg"
         >
           <div className="px-4 py-5 space-y-4">
+            <Link
+              href="#roles"
+              className="block text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Roles
+            </Link>
             <Link
               href="#experience"
               className="block text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
