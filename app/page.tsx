@@ -563,16 +563,26 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="text-slate-900 dark:text-white">Annie&apos;s Little Corner</CardTitle>
                   <CardDescription className="dark:text-slate-400">
-                    A calm bilingual learning app for curious adults
+                    My vibe-coded product &mdash; a five-minute nightly ritual for relearning
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                    Currently building an English and Simplified Chinese editorial library with fact-checked learning
-                    cards across Art, Science, and Literature. This work-in-progress responsive experience supports focused
-                    discovery, search, saved cards, reviewed progress, and device-local state without requiring an account.
+                    This is my vibe-coded passion project, and the inspiration is personal. After graduating and settling
+                    into corporate work, I realized how fast I was losing the common knowledge I used to carry &mdash;
+                    history, art, science. It started to make me feel &ldquo;dumb,&rdquo; and that feeling quietly drained
+                    my motivation to study anything at all. So I built my own little corner: a calm place to spend five
+                    minutes before bed relearning one thing.
+                  </p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    It is an English and Simplified Chinese editorial library of fact-checked cards across Art, Science,
+                    and Literature, with focused discovery, search, saved cards, and reviewed progress kept device-local
+                    &mdash; no account required. Still a work in progress.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
+                      Vibe Coded
+                    </Badge>
                     <Badge variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
                       Next.js
                     </Badge>
@@ -588,6 +598,7 @@ export default function Home() {
                   </div>
                   <p className="text-sm font-medium dark:text-white">Outcomes:</p>
                   <ul className="text-sm text-slate-600 dark:text-slate-400 list-disc pl-5 mt-1">
+                    <li>Designed around a five-minute nightly ritual &mdash; one card, no streaks, no pressure</li>
                     <li>Publishing bilingual cards organized into 9 topic collections</li>
                     <li>Created responsive category, topic, flashcard, search, saved, and reviewed experiences</li>
                     <li>Built an agent-assisted editorial workflow with no runtime AI API or recurring model cost</li>
