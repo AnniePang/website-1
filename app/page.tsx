@@ -134,6 +134,8 @@ export default function Home() {
                   "100+ business stakeholders served",
                   "Dimensional modeling for reporting",
                   "Source-of-truth reconciliation",
+                  "Offline model evaluation (Recall@k, Precision@k, F1)",
+                  "SOX scoping determinations with audit partners",
                 ],
               },
               {
@@ -144,10 +146,12 @@ export default function Home() {
                   "Build and own production ETL/ELT pipelines and dimensional data models on AWS over 120M+ records — requirements through orchestration, data-quality monitoring, governance, and query performance tuning.",
                 chips: [
                   "ETL/ELT on AWS Glue, S3, Redshift, Athena",
-                  "DAG orchestration & idempotent partitioned refresh",
+                  "Airflow DAG orchestration & idempotent partitioned refresh",
                   "Spark SQL on managed Spark/EMR",
                   "Star schema, fact/dimension, and SCD design",
-                  "Redshift MPP and Athena/Trino query optimization",
+                  "Redshift OLAP/MPP and Athena/Trino query optimization",
+                  "Grain-mismatch reconciliation across upstream feeds",
+                  "Reusable Glue job onboarding framework",
                   "SOX-scoped data governance and audit controls",
                   "CI/CD with staged promotion and rollback",
                 ],
@@ -163,6 +167,8 @@ export default function Home() {
                   "Causal effect estimation from randomized experiments",
                   "Bayesian and frequentist GLMs",
                   "Hypothesis testing, regression, posterior inference",
+                  "Offline model evaluation: Recall@k, Precision@k, F1",
+                  "Holdout-set validation on a grocery recommender",
                   "30 features for Sponsored Ads ranking models",
                   "$1M+ cumulative campaign revenue impact",
                   "Berkeley M.A. in Information and Data Science",
@@ -173,13 +179,15 @@ export default function Home() {
                 title: "Machine Learning Engineer",
                 delay: 0.45,
                 summary:
-                  "Build production ML data systems — offline feature pipelines powering ad ranking models, transformer fine-tuning and model serving, and a production LLM agent with retrieval grounding.",
+                  "Build production ML systems — offline feature pipelines powering ad ranking models, offline model evaluation, transformer fine-tuning and model serving, and a production LLM agent with retrieval grounding.",
                 chips: [
                   "Offline feature pipelines over 120M+ events",
+                  "Offline model evaluation & holdout validation",
                   "Transformer fine-tuning (T5, mT5, NLLB)",
                   "Custom BPE tokenizer training",
                   "FastAPI and Hugging Face model serving",
-                  "Production LLM agent (Claude, 14 MCP tool servers)",
+                  "Production LLM agent (Claude Code, 14 MCP servers)",
+                  "Declarative agent specs & retrieval grounding",
                   "PyTorch, TensorFlow, Scikit-Learn",
                 ],
               },
@@ -260,34 +268,50 @@ export default function Home() {
                           senior leadership, cutting ad-hoc data requests by 70%.
                         </li>
                         <li>
-                          Model and own production Redshift datasets for device inventory valuation &mdash; replacing
-                          manual per-geography rate lookups with a unified cost-per-replacement model and a multi-level
-                          pricing fallback hierarchy across 12 global fulfillment centers and 6 geographic regions,
-                          reducing 48+ hours of manual calculation to minutes of automated runtime over 120M+ records.
+                          Model and own production Redshift datasets for device inventory valuation, gathering
+                          requirements from Finance stakeholders &mdash; replacing manual per-geography rate lookups with a
+                          uniform cost-per-replacement framework and multi-level pricing fallback logic across 12 global
+                          fulfillment centers and 6 geographic regions, cutting 48+ hours of manual calculation to minutes
+                          and standardizing inventory cost logic across 120M+ records.
                         </li>
                         <li>
-                          Design and operate end-to-end ETL/ELT pipelines on AWS (Glue, S3, Redshift, Athena) with DAG
-                          orchestration and Spark SQL transforms on managed Spark/EMR &mdash; partitioned idempotent
-                          refresh, joins pushed into Redshift MPP SQL, and staged CI/CD promotion with automated
-                          beta/production validation and rollback.
+                          Design and operate end-to-end ETL/ELT pipelines on AWS (Glue, S3, Redshift, Athena) with
+                          Airflow-based DAG orchestration and Spark SQL transforms on managed Spark/EMR &mdash; partitioned
+                          idempotent refresh, joins pushed into Redshift MPP SQL, and staged CI/CD promotion with
+                          automated beta/production validation and rollback.
                         </li>
                         <li>
-                          Partner with Finance and Ad Sales to translate ambiguous business questions into measurable
-                          analyses, running statistical analysis across 120M+ behavioral events and building offline
-                          feature pipelines that engineer 30 features from purchase-history and browsing-behavior signals
-                          for Sponsored Ads ranking and targeting models, contributing a $1M+ cumulative increase in
-                          campaign revenue.
+                          Build offline feature pipelines powering Sponsored Ads ranking and targeting models &mdash;
+                          engineering 30 features from purchase-history and browsing-behavior signals across 120M+
+                          customer behavior events, contributing to a $1M+ cumulative increase in campaign revenue.
+                        </li>
+                        <li>
+                          Own offline model evaluation supporting the data science team on a grocery product-recommendation
+                          model built to increase basket size &mdash; Recall@k / Precision@k / F1 dashboards, holdout-set
+                          validation, and the data-quality checks that narrowed 13,000 candidate search keywords to ~200
+                          validated shopping intents cleared for A/B testing.
+                        </li>
+                        <li>
+                          Reconcile grain mismatches across upstream feeds &mdash; diagnosed component- versus
+                          terminal-level counting in delivery and returns data, then specified the upstream schema fix with
+                          the source-system team for a join key missing on 74% of rows.
                         </li>
                         <li>
                           Build data-quality and lineage controls for SOX-scoped financial reporting &mdash; assertions
-                          that block malformed loads, reconciliation against source-of-truth ledgers, and completeness
-                          monitoring &mdash; and own production on-call for reporting integrity in a SOX-controlled
-                          production environment.
+                          that block malformed loads and reconciliation against source-of-truth ledgers &mdash; own
+                          production on-call, and drive SOX scoping determinations with audit and process partners.
                         </li>
                         <li>
-                          Ship a production GenAI analytics agent (Claude with 14 MCP tool servers spanning Redshift,
-                          ETL orchestration, and QuickSight) grounded on an 18-document knowledge base, cutting on-call
-                          debugging time by 5 hours/month across 10+ recurring month-end financial reporting processes.
+                          Architect, deploy, and maintain a domain-specific LLM agent (Claude Code) for accounting across
+                          Amazon&apos;s Devices and Leo satellite-internet businesses &mdash; authoring declarative agent
+                          specs, integrating 14 MCP servers wrapping Redshift, ETL orchestration, and QuickSight, curating
+                          an 18-document knowledge base for retrieval grounding across 10+ monthly financial reporting
+                          processes, and automating multi-environment AWS credential workflows &mdash; cutting on-call
+                          debugging 5 hours/month.
+                        </li>
+                        <li>
+                          Build a reusable entrypoint and handler framework that standardizes how new reporting jobs
+                          onboard to the shared Glue platform, and own the team&apos;s month-end pipeline recovery runbook.
                         </li>
                       </ul>
                     </CardContent>
@@ -326,19 +350,15 @@ export default function Home() {
                       <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400">
                         <li>
                           Designed and executed A/B tests and statistical analyses of passenger inflight experience data,
-                          collaborating with vendors to evaluate product improvements; created Tableau visualizations and
-                          recommendations using Python (NumPy, Pandas) to quantify investment priorities, delivering
-                          recommendations that projected 20% increase in customer satisfaction.
+                          collaborating with vendors to evaluate product improvements; quantified investment priorities in
+                          Python (NumPy, Pandas) and Tableau and presented insights to leadership that influenced UX
+                          optimization &mdash; projecting a 20% increase in customer satisfaction and lifting satisfaction
+                          scores 30%.
                         </li>
                         <li>
                           Built and evaluated supervised learning models (Logistic Regression and SVM) for BERT-based document
                           classification and Q&amp;A system for internal customer service, enabling natural language search
                           capabilities across 10K+ support documents.
-                        </li>
-                        <li>
-                          Designed experiments and analyzed user feedback for product improvements using statistical methods,
-                          presenting data-driven insights to leadership that influenced UX optimization, resulting in 30%
-                          increase in user satisfaction scores.
                         </li>
                       </ul>
                     </CardContent>
@@ -408,7 +428,9 @@ export default function Home() {
                     <CardHeader>
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                          <CardTitle className="text-slate-900 dark:text-white">IT Operations Intern</CardTitle>
+                          <CardTitle className="text-slate-900 dark:text-white">
+                            IT Operations Intern (Data &amp; Analytics)
+                          </CardTitle>
                           <CardDescription className="dark:text-slate-400">Tesla, Inc.</CardDescription>
                         </div>
                         <Badge className="w-fit bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200">
@@ -1127,7 +1149,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="ml" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain", "Transformers / BERT", "Hugging Face", "Feature Engineering", "Random Forests", "Model Evaluation"].map(
+                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain", "Transformers / BERT", "Hugging Face", "Feature Engineering", "Random Forests", "Model Evaluation", "BPE Tokenizer Training", "FastAPI Model Serving", "Logistic Regression", "SVM"].map(
                     (skill) => (
                       <Card
                         key={skill}
@@ -1148,7 +1170,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="data" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI", "Apache Airflow", "AWS Step Functions", "Amazon Redshift", "Amazon Athena", "AWS Glue", "Spark SQL"].map((skill) => (
+                  {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI", "Apache Airflow", "AWS Step Functions", "Amazon Redshift", "Amazon Athena", "AWS Glue", "Spark SQL", "Athena / Trino", "Hive Metastore", "S3 Object Storage", "Matplotlib"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -1167,7 +1189,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="statistics" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["A/B Testing", "Experimental Design", "Causal Inference", "Hypothesis Testing", "Bayesian GLMs", "Regression Analysis", "Cohort Analysis", "Confidence Intervals", "KPI Definition"].map((skill) => (
+                  {["A/B Testing", "Experimental Design", "Causal Inference", "Hypothesis Testing", "Bayesian GLMs", "Regression Analysis", "Cohort Analysis", "Confidence Intervals", "KPI Definition", "Posterior Inference", "Credible Intervals", "Holdout Validation", "Recall@k / Precision@k"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -1186,7 +1208,7 @@ export default function Home() {
               </TabsContent>
               <TabsContent value="other" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Jira", "Confluence", "Git", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js", "Dimensional Modeling", "SOX Data Governance", "MCP Tool Servers", "Production On-Call"].map((skill) => (
+                  {["Jira", "Confluence", "Git", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js", "Dimensional Modeling", "SOX Data Governance", "MCP Tool Servers", "Production On-Call", "Linux / Shell", "Slowly Changing Dimensions", "Query Optimization", "Backfills", "Claude Code", "Declarative Agent Specs"].map((skill) => (
                     <Card
                       key={skill}
                       className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
@@ -1556,6 +1578,9 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="text-slate-900 dark:text-white">Contact Information</CardTitle>
                   <CardDescription className="dark:text-slate-400">Alternative ways to reach me</CardDescription>
+                  <Badge className="w-fit mt-2 bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200">
+                    Open to relocation anywhere in the US
+                  </Badge>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -1565,10 +1590,10 @@ export default function Home() {
                     <div>
                       <p className="font-medium dark:text-white">Email</p>
                       <a
-                        href="mailto:anniepang@berkeley.edu"
+                        href="mailto:annytianqipang@gmail.com"
                         className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                       >
-                        anniepang@berkeley.edu
+                        annytianqipang@gmail.com
                       </a>
                     </div>
                   </div>
@@ -1663,7 +1688,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="mailto:anniepang@berkeley.edu" aria-label="Email">
+                <Link href="mailto:annytianqipang@gmail.com" aria-label="Email">
                   <Mail className="h-5 w-5" />
                 </Link>
               </Button>
