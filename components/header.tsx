@@ -89,7 +89,7 @@ export function Header() {
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="mailto:anniepang@berkeley.edu" aria-label="Email">
+                <Link href="mailto:annytianqipang@gmail.com" aria-label="Email">
                   <Mail className="h-5 w-5" />
                 </Link>
               </Button>
@@ -180,7 +180,7 @@ export function Header() {
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="mailto:anniepang@berkeley.edu" aria-label="Email">
+                <Link href="mailto:annytianqipang@gmail.com" aria-label="Email">
                   <Mail className="h-5 w-5" />
                 </Link>
               </Button>
