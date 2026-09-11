@@ -127,8 +127,9 @@ export default function Home() {
           >
             <motion.div variants={fadeIn("right", 0.3)} className="md:w-2/3">
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Annie Pang</h1>
-              <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-2">
-                Business Intelligence Engineer | Data Engineer | Data Scientist | Machine Learning Engineer
+              <p className="text-lg md:text-2xl text-slate-700 dark:text-slate-300 mb-2">
+                Business Intelligence Engineer | Data Engineer | Data Scientist | Machine Learning Engineer | Software
+                Engineer
               </p>
               <p className="text-base text-slate-500 dark:text-slate-400 mb-6">
                 Product-minded analytics &amp; data platform builder · UC Berkeley M.A. in Information and Data Science
@@ -188,7 +189,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle
             title="Role Tracks"
-            subtitle="How my experience maps to Business Intelligence, Data Engineering, Data Science, and Machine Learning Engineering"
+            subtitle="How my experience maps to Business Intelligence, Data Engineering, Data Science, Machine Learning Engineering, and Software Engineering"
           />
 
           <motion.div
@@ -253,11 +254,11 @@ export default function Home() {
                 ],
               },
               {
-                abbr: "MLE",
-                title: "Machine Learning Engineer",
+                abbr: "MLE/SWE",
+                title: "Machine Learning Engineer & Software Engineer",
                 delay: 0.45,
                 summary:
-                  "Build production ML systems — offline feature pipelines powering ad ranking models, offline model evaluation, transformer fine-tuning and model serving, and a production LLM agent with retrieval grounding.",
+                  "Build production ML systems — offline feature pipelines powering ad ranking models, offline model evaluation, transformer fine-tuning and model serving, and a production LLM agent with retrieval grounding — and ship the software around them, from Python services and internal tooling to React and Next.js applications.",
                 chips: [
                   "Offline feature pipelines over 120M+ events",
                   "Offline model evaluation & holdout validation",
@@ -266,6 +267,9 @@ export default function Home() {
                   "FastAPI and Hugging Face model serving",
                   "Production LLM agent (Claude Code, 14 MCP servers)",
                   "Declarative agent specs & retrieval grounding",
+                  "Production Python, TypeScript, and SQL",
+                  "React / Next.js applications shipped end to end",
+                  "Code review, CI/CD, and production on-call ownership",
                   "PyTorch, TensorFlow, Scikit-Learn",
                 ],
               },
@@ -275,7 +279,17 @@ export default function Home() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 shrink-0 rounded-full bg-slate-800 dark:bg-slate-700 flex items-center justify-center">
-                        <span className="text-xs font-bold text-white">{track.abbr}</span>
+                        {track.abbr.includes("/") ? (
+                          <span className="text-[10px] font-bold leading-tight text-white text-center">
+                            {track.abbr.split("/").map((part) => (
+                              <span key={part} className="block">
+                                {part}
+                              </span>
+                            ))}
+                          </span>
+                        ) : (
+                          <span className="text-xs font-bold text-white">{track.abbr}</span>
+                        )}
                       </div>
                       <div>
                         <CardTitle className="text-slate-900 dark:text-white">{track.title}</CardTitle>
