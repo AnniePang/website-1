@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { IslandToggle } from "@/components/island-toggle"
 import { motion } from "framer-motion"
 
 export function Header() {
@@ -83,6 +84,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
+            <IslandToggle className="hidden sm:inline-flex" />
             <div className="hidden md:flex space-x-2">
               <Button variant="ghost" size="icon" asChild>
                 <Link href="https://www.linkedin.com/in/annie-pang" target="_blank" aria-label="LinkedIn">
@@ -181,6 +183,12 @@ export function Header() {
             >
               Contact
             </Link>
+            <div className="pt-2 sm:hidden">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                Design
+              </p>
+              <IslandToggle />
+            </div>
             <div className="flex space-x-4 pt-2">
               <Button variant="ghost" size="icon" asChild>
                 <Link href="https://www.linkedin.com/in/annie-pang" target="_blank" aria-label="LinkedIn">

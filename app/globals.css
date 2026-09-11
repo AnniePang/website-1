@@ -120,3 +120,343 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ==========================================================================
+   ISLAND SKIN  --  Animal Crossing-inspired alternate design
+   Ported from github.com/AnniePang/annies-island-portfolio (PR #1).
+
+   No Nintendo assets, fonts, or files are used anywhere. All artwork is
+   hand-authored SVG/CSS; fonts are Baloo 2 and Nunito under SIL OFL 1.1.
+
+   EVERYTHING below is scoped under `.island`, which the skin toggle puts on
+   <html>. With that class absent, the professional design renders unchanged --
+   that is the whole contract of this file.
+
+   The original island build remapped Tailwind's `slate` ramp inside a global
+   `@theme` block. That cannot work here, because both designs share one build,
+   so the remap moves into the `.island` scope instead. Tailwind v4 utilities
+   compile to `var(--color-*)` references, so overriding the variables in a
+   class scope reskins every utility beneath it.
+   ========================================================================== */
+
+/* Accent ramps and display type must live in `@theme` so Tailwind GENERATES the
+   utilities (bg-leaf-500, text-wood-700, font-display). These only ADD new
+   utilities -- no existing professional utility changes value. */
+@theme {
+  --color-leaf-100: #e6f7dc;
+  --color-leaf-300: #a8e08a;
+  --color-leaf-500: #6cc24a;
+  --color-leaf-600: #57a83a;
+  --color-leaf-700: #35701f;
+
+  --color-sea-100: #dcf5fb;
+  --color-sea-300: #9fe3f2;
+  --color-sea-500: #4fc3e8;
+  --color-sea-600: #2fa5cd;
+
+  --color-bell-300: #fbe9a0;
+  --color-bell-500: #f7d74a;
+  --color-bell-600: #e0ba25;
+
+  --color-coral-400: #f79c86;
+  --color-coral-500: #f2836b;
+
+  --color-wood-300: #d9ab6d;
+  --color-wood-500: #b4813f;
+  --color-wood-700: #7c552a;
+
+  --color-cream: #fffcf0;
+
+  --font-display: var(--font-baloo), var(--font-nunito), ui-rounded, sans-serif;
+  --font-island-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------- Island day: remapped neutrals + semantic tokens ---------- */
+.island {
+  /* Sun-bleached sand through driftwood, standing in for the cool grey ramp. */
+  --color-slate-50: #fdf8e7;
+  --color-slate-100: #f6edcf;
+  --color-slate-200: #e9dbaf;
+  --color-slate-300: #cfbb87;
+  --color-slate-400: #7a6739;
+  --color-slate-500: #6b5a33;
+  --color-slate-600: #5c4d2c;
+  --color-slate-700: #493c21;
+  --color-slate-800: #3f3419;
+  --color-slate-900: #2d2612;
+  --color-slate-950: #1d180b;
+
+  /* Pillowy geometry. Scoped, so professional rounding is untouched. */
+  --radius: 1.25rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
+  --radius-3xl: 3rem;
+
+  --background: #fffcf0;
+  --foreground: #4a3d22;
+  --card: #fffdf6;
+  --card-foreground: #4a3d22;
+  --popover: #fffdf6;
+  --popover-foreground: #4a3d22;
+  --primary: #6cc24a;
+  --primary-foreground: #21400f;
+  --secondary: #f6edcf;
+  --secondary-foreground: #55472a;
+  --muted: #f6edcf;
+  --muted-foreground: #8a7748;
+  --accent: #dcf5fb;
+  --accent-foreground: #1d5a70;
+  --destructive: #e2604a;
+  --border: #e5d3a8;
+  --input: #e5d3a8;
+  --ring: #6cc24a;
+
+  --acnh-grass-a: #7cc95a;
+  --acnh-grass-b: #6cbb4c;
+  --acnh-sky-a: #a9e7f2;
+  --acnh-sky-b: #d9f4ee;
+  --acnh-sand: #f6e6bd;
+  --acnh-panel: #fffdf6;
+  --acnh-panel-edge: #e5d3a8;
+  --acnh-stitch: #cbb98a;
+}
+
+/* ---------- Night island ---------- */
+.island.dark {
+  /* These two mid-ramp tones cannot clear WCAG AA against both light sand and
+     dark soil, so they are re-pointed lighter here. */
+  --color-slate-400: #b09c69;
+  --color-slate-500: #c2ad7a;
+
+  --background: #1d180b;
+  --foreground: #f6edcf;
+  --card: #2d2612;
+  --card-foreground: #f6edcf;
+  --popover: #2d2612;
+  --popover-foreground: #f6edcf;
+  --primary: #8bd46a;
+  --primary-foreground: #17300a;
+  --secondary: #3f3419;
+  --secondary-foreground: #f6edcf;
+  --muted: #3f3419;
+  --muted-foreground: #c2ac7c;
+  --accent: #274b57;
+  --accent-foreground: #cdeef7;
+  --destructive: #ef7a63;
+  --border: #554728;
+  --input: #554728;
+  --ring: #8bd46a;
+
+  --acnh-grass-a: #2f5a2a;
+  --acnh-grass-b: #274d24;
+  --acnh-sky-a: #14324a;
+  --acnh-sky-b: #1b2a3d;
+  --acnh-sand: #4a3f24;
+  --acnh-panel: #2d2612;
+  --acnh-panel-edge: #554728;
+}
+
+/* The professional design alternates white and slate-50 section bands. Under the
+   island skin the white bands read as cold next to the sand palette, so they warm
+   to cream. Scoped, so the professional bands are untouched. */
+.island .bg-white {
+  background-color: var(--color-cream);
+}
+
+.island.dark .bg-white {
+  background-color: #1d180b;
+}
+
+/* ---------- Island base type and page grain ---------- */
+.island body {
+  font-family: var(--font-island-sans);
+  /* Dappled light on the page base -- pure CSS, no image asset. */
+  background-image:
+    radial-gradient(circle at 12% 18%, rgb(255 255 255 / 0.55) 0 22%, transparent 23%),
+    radial-gradient(circle at 78% 62%, rgb(255 255 255 / 0.4) 0 18%, transparent 19%);
+  background-size: 340px 340px, 260px 260px;
+  background-attachment: fixed;
+}
+
+.island.dark body {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgb(255 255 255 / 0.05) 0 22%, transparent 23%),
+    radial-gradient(circle at 78% 62%, rgb(255 255 255 / 0.035) 0 18%, transparent 19%);
+}
+
+.island h1,
+.island h2,
+.island h3,
+.island h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Island restyling of the shared shadcn primitives.
+
+   The original island build edited badge.tsx / button.tsx / card.tsx directly.
+   Here the primitives are left ALONE and reshaped through the `data-slot`
+   attributes they already emit, so one component serves both designs and the
+   professional appearance cannot regress.
+   ========================================================================== */
+
+/* Pillowy panel: fat warm edge, soft lifted shadow. */
+.island [data-slot="card"] {
+  border-radius: var(--radius-3xl);
+  border-width: 2px;
+  border-color: var(--acnh-panel-edge);
+  box-shadow:
+    0 2px 0 0 rgb(0 0 0 / 0.04),
+    0 12px 26px -14px rgb(90 70 30 / 0.4);
+  transition: transform 300ms ease;
+}
+
+.island [data-slot="card-title"] {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Leaf-pill tags. */
+.island [data-slot="badge"] {
+  border-radius: 9999px;
+  border-width: 1.5px;
+  padding-inline: 0.625rem;
+  font-weight: 600;
+}
+
+/* Chunky pill buttons with the pressed-down bottom edge. */
+.island [data-slot="button"] {
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  box-shadow: 0 4px 0 0 var(--acnh-btn-shadow, rgb(0 0 0 / 0.18));
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.island [data-slot="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 0 var(--acnh-btn-shadow, rgb(0 0 0 / 0.18));
+}
+
+.island [data-slot="button"]:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 var(--acnh-btn-shadow, rgb(0 0 0 / 0.18));
+}
+
+/* Icon-only and link buttons stay flat -- no raised edge. */
+.island [data-slot="button"].acnh-flat,
+.island [data-slot="button"][class*="rounded-full"][class*="size-"] {
+  box-shadow: none;
+}
+
+.island [data-slot="button"].acnh-flat:hover,
+.island [data-slot="button"].acnh-flat:active {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Island motif classes -- referenced from island-only markup.
+   ========================================================================== */
+@layer components {
+  .acnh-panel {
+    position: relative;
+    background: var(--acnh-panel);
+    border: 2px solid var(--acnh-panel-edge);
+    border-radius: var(--radius-xl);
+    box-shadow:
+      0 2px 0 0 rgb(0 0 0 / 0.04),
+      0 10px 24px -12px rgb(90 70 30 / 0.35);
+  }
+
+  .acnh-panel::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 2px dashed color-mix(in srgb, var(--acnh-panel-edge) 70%, transparent);
+    border-radius: calc(var(--radius-xl) - 6px);
+    pointer-events: none;
+  }
+
+  .acnh-btn-leaf {
+    background-color: var(--color-leaf-500);
+    color: #1f3d0d;
+    --acnh-btn-shadow: var(--color-leaf-700);
+  }
+
+  .acnh-btn-leaf:hover {
+    background-color: var(--color-leaf-300);
+  }
+
+  .acnh-btn-sea {
+    background-color: var(--color-sea-500);
+    color: #0d3b4a;
+    --acnh-btn-shadow: var(--color-sea-600);
+  }
+
+  /* Wooden signpost plaque behind each island section heading. */
+  .acnh-signpost {
+    position: relative;
+    display: inline-block;
+    padding: 0.55rem 1.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, var(--color-wood-300), var(--color-wood-500));
+    color: #45301a;
+    border: 2px solid var(--color-wood-700);
+    box-shadow: 0 3px 0 0 var(--color-wood-700);
+    font-family: var(--font-display);
+  }
+
+  .dark .acnh-signpost {
+    background: linear-gradient(180deg, #7b5a34, #5f4526);
+    color: #f6e7cf;
+    border-color: #3d2b17;
+    box-shadow: 0 3px 0 0 #3d2b17;
+  }
+
+  .acnh-tag {
+    border-radius: 9999px;
+    background: var(--color-leaf-100);
+    color: var(--color-leaf-700);
+    border: 1.5px solid var(--color-leaf-300);
+    font-weight: 600;
+  }
+
+  .dark .acnh-tag {
+    background: color-mix(in srgb, var(--color-leaf-700) 30%, transparent);
+    color: var(--color-leaf-300);
+    border-color: var(--color-leaf-700);
+  }
+
+  /* Grass strip: repeating tufts drawn with gradients. */
+  .acnh-grass {
+    background:
+      radial-gradient(circle at 50% 120%, var(--acnh-grass-a) 0 40%, transparent 41%) 0 0 / 26px 18px repeat-x,
+      linear-gradient(180deg, var(--acnh-grass-a), var(--acnh-grass-b));
+  }
+
+  /* Island sky wash for the hero. */
+  .acnh-sky {
+    background: linear-gradient(180deg, var(--acnh-sky-a) 0%, var(--acnh-sky-b) 62%, var(--acnh-sand) 100%);
+  }
+}
+
+@layer utilities {
+  .acnh-focus:focus-visible {
+    outline: 3px solid var(--color-leaf-500);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .island [data-slot="button"],
+    .island [data-slot="button"]:hover,
+    .island [data-slot="button"]:active {
+      transform: none;
+      transition: none;
+    }
+  }
+}
