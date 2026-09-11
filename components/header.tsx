@@ -31,7 +31,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <Link
               href="#roles"
               className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
@@ -43,6 +43,12 @@ export function Header() {
               className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
             >
               Experience
+            </Link>
+            <Link
+              href="#ai"
+              className="text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
+            >
+              AI Work
             </Link>
             <Link
               href="#projects"
@@ -132,6 +138,13 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Experience
+            </Link>
+            <Link
+              href="#ai"
+              className="block text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              AI Work
             </Link>
             <Link
               href="#projects"

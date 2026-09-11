@@ -13,6 +13,84 @@ import { Header } from "@/components/header"
 import { SectionTitle } from "@/components/section-title"
 import { fadeIn, staggerContainer } from "@/lib/animation"
 
+/**
+ * Brand marks for skills that have a real technology logo.
+ * Source: Simple Icons (https://simpleicons.org), licensed CC0-1.0 (public domain),
+ * vendored as brand-coloured SVGs under /public/logos.
+ *
+ * A skill absent from this map renders the original single-letter fallback. That is
+ * either because it is a concept rather than a product (A/B Testing, ETL, Causal
+ * Inference), or because the vendor's mark is trademark-restricted and not carried by
+ * the CC0 set (the AWS family, Tableau, Power BI).
+ */
+const SKILL_LOGOS: Record<string, string> = {
+  // Programming
+  Python: "python",
+  R: "r",
+  Java: "openjdk",
+  "C++": "cplusplus",
+  "HTML/CSS": "html5",
+  JavaScript: "javascript",
+  TypeScript: "typescript",
+  // Machine Learning
+  "Scikit-Learn": "scikitlearn",
+  PyTorch: "pytorch",
+  TensorFlow: "tensorflow",
+  Pandas: "pandas",
+  NumPy: "numpy",
+  LangChain: "langchain",
+  "Hugging Face": "huggingface",
+  "FastAPI Model Serving": "fastapi",
+  // Data Tools
+  PostgreSQL: "postgresql",
+  MongoDB: "mongodb",
+  "Apache Airflow": "apacheairflow",
+  "Spark SQL": "apachespark",
+  "Athena / Trino": "trino",
+  "Hive Metastore": "apachehive",
+  // Other
+  Jira: "jira",
+  Confluence: "confluence",
+  Asana: "asana",
+  Git: "git",
+  React: "react",
+  "Fast API": "fastapi",
+  "Next.js": "nextdotjs",
+  "Linux / Shell": "linux",
+  "MCP Tool Servers": "modelcontextprotocol",
+  "Claude Code": "claudecode",
+}
+
+function SkillCard({ skill }: { skill: string }) {
+  const logo = SKILL_LOGOS[skill]
+  return (
+    <Card className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700">
+      <CardContent className="flex flex-col items-center justify-center p-0">
+        <div
+          className={`w-12 h-12 rounded-full flex items-center justify-center mb-2 ${
+            logo ? "bg-slate-100" : "bg-slate-100 dark:bg-slate-700"
+          }`}
+        >
+          {logo ? (
+            <Image
+              src={`/logos/${logo}.svg`}
+              alt=""
+              aria-hidden="true"
+              width={24}
+              height={24}
+              unoptimized
+              className="w-6 h-6"
+            />
+          ) : (
+            <span className="text-xl font-bold text-slate-700 dark:text-slate-300">{skill.charAt(0)}</span>
+          )}
+        </div>
+        <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
+      </CardContent>
+    </Card>
+  )
+}
+
 export default function Home() {
   // Add smooth scrolling for anchor links
   useEffect(() => {
@@ -286,12 +364,6 @@ export default function Home() {
                           customer behavior events, contributing to a $1M+ cumulative increase in campaign revenue.
                         </li>
                         <li>
-                          Own offline model evaluation supporting the data science team on a grocery product-recommendation
-                          model built to increase basket size &mdash; Recall@k / Precision@k / F1 dashboards, holdout-set
-                          validation, and the data-quality checks that narrowed 13,000 candidate search keywords to ~200
-                          validated shopping intents cleared for A/B testing.
-                        </li>
-                        <li>
                           Reconcile grain mismatches across upstream feeds &mdash; diagnosed component- versus
                           terminal-level counting in delivery and returns data, then specified the upstream schema fix with
                           the source-system team for a join key missing on 74% of rows.
@@ -302,18 +374,20 @@ export default function Home() {
                           production on-call, and drive SOX scoping determinations with audit and process partners.
                         </li>
                         <li>
-                          Architect, deploy, and maintain a domain-specific LLM agent (Claude Code) for accounting across
-                          Amazon&apos;s Devices and Leo satellite-internet businesses &mdash; authoring declarative agent
-                          specs, integrating 14 MCP servers wrapping Redshift, ETL orchestration, and QuickSight, curating
-                          an 18-document knowledge base for retrieval grounding across 10+ monthly financial reporting
-                          processes, and automating multi-environment AWS credential workflows &mdash; cutting on-call
-                          debugging 5 hours/month.
-                        </li>
-                        <li>
                           Build a reusable entrypoint and handler framework that standardizes how new reporting jobs
                           onboard to the shared Glue platform, and own the team&apos;s month-end pipeline recovery runbook.
                         </li>
                       </ul>
+                      <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+                        AI and agent systems I build and own in this role are detailed in{" "}
+                        <Link
+                          href="#ai"
+                          className="underline underline-offset-2 hover:text-slate-900 dark:hover:text-white transition-colors"
+                        >
+                          AI Initiatives
+                        </Link>
+                        .
+                      </p>
                     </CardContent>
                   </div>
                 </div>
@@ -555,6 +629,140 @@ export default function Home() {
                 </div>
               </Card>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* AI Initiatives Section */}
+      <section
+        id="ai"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800"
+      >
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle
+            title="AI Initiatives"
+            subtitle="AI and agent systems I build and contribute to at Amazon, as distinct initiatives"
+          />
+
+          <motion.div
+            variants={staggerContainer(0.1, 0.15)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.05 }}
+            className="space-y-8"
+          >
+            {[
+              {
+                num: "01",
+                title: "Devices & Leo Finance AI Agent",
+                role: "Architect & owner",
+                delay: 0.3,
+                summary:
+                  "A domain-specific AI agent for the Devices and Leo satellite-internet finance workstream, shipped as a versioned internal package so it deploys, versions, and gets reviewed like any other service. A single declarative spec defines the system prompt, tool servers, skill library, context files, and lifecycle hooks — there is no hand-written agent loop.",
+                highlights: [
+                  "Integrates 14 MCP tool servers wrapping Redshift, ETL orchestration, and QuickSight, split between platform-hosted servers and servers the package ships and launches itself",
+                  "Curates an 18-document knowledge base for retrieval grounding across 10+ monthly financial reporting processes",
+                  "Lifecycle hooks handle credential vending, an automated pre-review gate, and skill-usage telemetry — so behavior travels with the package instead of living in one person's local settings",
+                  "Cuts on-call debugging by 5 hours/month across recurring month-end close processes",
+                ],
+                tech: ["Claude Code", "MCP", "Declarative Agent Specs", "Python", "Bash Hooks", "AWS"],
+              },
+              {
+                num: "02",
+                title: "Read-Only Database MCP Server",
+                role: "Debugging & maintenance",
+                delay: 0.35,
+                summary:
+                  "An MCP server speaking JSON-RPC over stdio that gives the agent read-only SQL access to Redshift across three environments plus a MySQL backend, exposed as five tools: query, list_schemas, list_tables, describe_table, and search_tables. My contribution is debugging and maintenance rather than original authorship — including the credential and backend failures that kept it from working under a second agent client.",
+                highlights: [
+                  "A SQL validator is the hard security boundary — first-keyword allowlist, string-literal stripping before the write/DDL blocklist, word-boundary keyword matching so a column named updated_at is not mistaken for UPDATE, and multi-statement rejection",
+                  "Treats model output as untrusted input: the read-only guarantee is enforced in code the model cannot reason around, never as a prompt instruction",
+                  "Connection pool keyed by environment and credential identity, health-checked before reuse so expired IAM credentials never surface to the caller",
+                  "Identity-based IAM auth with no implicit user creation; errors are sanitized so credentials never leak into a message, and production results carry an explicit warning",
+                ],
+                tech: ["Python", "MCP", "JSON-RPC", "boto3", "Amazon Redshift", "MySQL", "IAM"],
+              },
+              {
+                num: "03",
+                title: "Cross-Client Agent Parity",
+                role: "Diagnosed & shipped",
+                delay: 0.4,
+                summary:
+                  "The published agent was written for one agent client and loaded under a second with roughly a third of itself silently missing. I found it from a user-visible symptom — dashboard refreshes failing, which read as a permissions problem — and traced it to a lifecycle hook that never ran under the second client, so credentials were never vended.",
+                highlights: [
+                  "Differential debugging: the same agent worked under one client and not the other, so the bug lived in what the two clients read differently — not in the service that appeared to fail",
+                  "Shipped a second client configuration block, a mirrored hooks directory, and a credential shim for the client that sandboxes its entire process tree, guarded on the actual failure condition rather than a client name",
+                  "Moved the automated pre-review gate out of personal settings and into the package, so every user of the agent inherits it and it is version-controlled like any other code",
+                  "~3,600 lines across 19 files, plus a local test harness that verifies the spec, includes, launchers, hooks, and servers on a host where the platform build cannot run",
+                ],
+                tech: ["Bash", "AWS credential_process", "Differential Debugging", "Test Harness Design", "MCP"],
+              },
+              {
+                num: "04",
+                title: "Schema-Drift Pre-Review Skill",
+                role: "Built end to end",
+                delay: 0.45,
+                summary:
+                  "A packaged agent skill and Python script that reads a committed diff and reports which output columns the change touched that nothing protects — no test assertion and no pinned expected-column contract. It generalizes a real production fix: one added column shifted a positionally-loaded CSV and broke a month-end load that only runs in production, so no local test could have caught it.",
+                highlights: [
+                  "Offline by design — parses the diff and greps the repo, so it runs in seconds with no credentials; the live-table half is delegated to the agent, which has environment-aware auth",
+                  "Exits non-zero on gaps so it can gate a pre-CR script the same way an automated review loop does",
+                  "Validated against real commits rather than synthetic examples: on the commit that caused the original failure, it flags the exact column",
+                  "Measuring recall against ground truth caught a parser bug in my own tool — 26 of 42 columns detected, because a column name containing a parenthesis closed the list early",
+                ],
+                tech: ["Python", "Git Diff Parsing", "Agent Skills", "Static Analysis"],
+              },
+              {
+                num: "05",
+                title: "Grocery Recommender Model Evaluation",
+                role: "Owned the evaluation layer",
+                delay: 0.5,
+                summary:
+                  "Owned offline model evaluation supporting the data science team on a grocery product-recommendation model built to increase basket size across Amazon's grocery business.",
+                highlights: [
+                  "Built Recall@k / Precision@k / F1 dashboards and holdout-set validation as the model's offline evaluation layer",
+                  "Data-quality checks narrowed 13,000 candidate search keywords to ~200 validated shopping intents cleared for A/B testing",
+                  "Added model-degradation alerting on the evaluation metrics so quality regressions surfaced without a manual review",
+                ],
+                tech: ["SQL", "Python", "QuickSight", "Offline Evaluation", "A/B Testing"],
+              },
+            ].map((item) => (
+              <motion.div key={item.num} variants={fadeIn("up", item.delay)}>
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:bg-slate-800 dark:border-slate-700">
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 shrink-0 rounded-full bg-slate-800 dark:bg-slate-700 flex items-center justify-center">
+                          <span className="text-sm font-bold text-white">{item.num}</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-slate-900 dark:text-white">{item.title}</CardTitle>
+                          <CardDescription className="dark:text-slate-400">Amazon &middot; Devices &amp; Leo Finance</CardDescription>
+                        </div>
+                      </div>
+                      <Badge className="w-fit bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200">
+                        {item.role}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">{item.summary}</p>
+                    <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-400 mb-4">
+                      {item.highlights.map((h) => (
+                        <li key={h}>{h}</li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-2">
+                      {item.tech.map((t) => (
+                        <Badge key={t} variant="outline" className="bg-slate-100 dark:bg-slate-700 dark:text-slate-300">
+                          {t}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -1131,97 +1339,35 @@ export default function Home() {
               <TabsContent value="programming" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {["Python", "R", "SQL", "Java", "C++", "HTML/CSS", "JavaScript", "TypeScript"].map((skill) => (
-                    <Card
-                      key={skill}
-                      className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
-                    >
-                      <CardContent className="flex flex-col items-center justify-center p-0">
-                        <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-2">
-                          <span className="text-xl font-bold text-slate-700 dark:text-slate-300">
-                            {skill.charAt(0)}
-                          </span>
-                        </div>
-                        <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
-                      </CardContent>
-                    </Card>
+                    <SkillCard key={skill} skill={skill} />
                   ))}
                 </div>
               </TabsContent>
               <TabsContent value="ml" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain", "Transformers / BERT", "Hugging Face", "Feature Engineering", "Random Forests", "Model Evaluation", "BPE Tokenizer Training", "FastAPI Model Serving", "Logistic Regression", "SVM"].map(
-                    (skill) => (
-                      <Card
-                        key={skill}
-                        className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
-                      >
-                        <CardContent className="flex flex-col items-center justify-center p-0">
-                          <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-2">
-                            <span className="text-xl font-bold text-slate-700 dark:text-slate-300">
-                              {skill.charAt(0)}
-                            </span>
-                          </div>
-                          <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
-                        </CardContent>
-                      </Card>
-                    ),
-                  )}
+                  {["Scikit-Learn", "PyTorch", "TensorFlow", "Pandas", "NumPy", "NLP", "Computer Vision", "Deep Learning", "LangChain", "Transformers / BERT", "Hugging Face", "Feature Engineering", "Random Forests", "Model Evaluation", "BPE Tokenizer Training", "FastAPI Model Serving", "Logistic Regression", "SVM"].map((skill) => (
+                    <SkillCard key={skill} skill={skill} />
+                  ))}
                 </div>
               </TabsContent>
               <TabsContent value="data" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {["PostgreSQL", "Amazon Quicksight", "MongoDB", "AWS", "Tableau", "Power BI", "Apache Airflow", "AWS Step Functions", "Amazon Redshift", "Amazon Athena", "AWS Glue", "Spark SQL", "Athena / Trino", "Hive Metastore", "S3 Object Storage", "Matplotlib"].map((skill) => (
-                    <Card
-                      key={skill}
-                      className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
-                    >
-                      <CardContent className="flex flex-col items-center justify-center p-0">
-                        <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-2">
-                          <span className="text-xl font-bold text-slate-700 dark:text-slate-300">
-                            {skill.charAt(0)}
-                          </span>
-                        </div>
-                        <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
-                      </CardContent>
-                    </Card>
+                    <SkillCard key={skill} skill={skill} />
                   ))}
                 </div>
               </TabsContent>
               <TabsContent value="statistics" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {["A/B Testing", "Experimental Design", "Causal Inference", "Hypothesis Testing", "Bayesian GLMs", "Regression Analysis", "Cohort Analysis", "Confidence Intervals", "KPI Definition", "Posterior Inference", "Credible Intervals", "Holdout Validation", "Recall@k / Precision@k"].map((skill) => (
-                    <Card
-                      key={skill}
-                      className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
-                    >
-                      <CardContent className="flex flex-col items-center justify-center p-0">
-                        <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-2">
-                          <span className="text-xl font-bold text-slate-700 dark:text-slate-300">
-                            {skill.charAt(0)}
-                          </span>
-                        </div>
-                        <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
-                      </CardContent>
-                    </Card>
+                    <SkillCard key={skill} skill={skill} />
                   ))}
                 </div>
               </TabsContent>
               <TabsContent value="other" className="mt-6">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {["Jira", "Confluence", "Git", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js", "Dimensional Modeling", "SOX Data Governance", "MCP Tool Servers", "Production On-Call", "Linux / Shell", "Slowly Changing Dimensions", "Query Optimization", "Backfills", "Claude Code", "Declarative Agent Specs"].map((skill) => (
-                    <Card
-                      key={skill}
-                      className="flex flex-col items-center justify-center p-4 h-32 hover:shadow-md transition-shadow duration-300 hover:-translate-y-1 transform transition-transform dark:bg-slate-800 dark:border-slate-700"
-                    >
-                      <CardContent className="flex flex-col items-center justify-center p-0">
-                        <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-2">
-                          <span className="text-xl font-bold text-slate-700 dark:text-slate-300">
-                            {skill.charAt(0)}
-                          </span>
-                        </div>
-                        <p className="text-center font-medium text-slate-900 dark:text-white">{skill}</p>
-                      </CardContent>
-                    </Card>
+                  {["Jira", "Confluence", "Asana", "Git", "Agile", "ETL", "Data Visualization", "React", "Fast API", "CI/CD", "Data Modeling", "Next.js", "Dimensional Modeling", "SOX Data Governance", "MCP Tool Servers", "Production On-Call", "Linux / Shell", "Slowly Changing Dimensions", "Query Optimization", "Backfills", "Claude Code", "Declarative Agent Specs"].map((skill) => (
+                    <SkillCard key={skill} skill={skill} />
                   ))}
                 </div>
               </TabsContent>
@@ -1636,7 +1782,7 @@ export default function Home() {
                       asChild
                     >
                       <a
-                        href="https://drive.google.com/file/d/1cEVE7GzTf-ElBc66c11qQ-QRwPH9q7lm/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1VuM5P9nkSC0R9gl2_d5FBPv_97eN68mI/view?usp=sharing"
                         target="_blank"
                         download
                         rel="noreferrer"
@@ -1651,7 +1797,7 @@ export default function Home() {
                       asChild
                     >
                       <a
-                        href="https://drive.google.com/file/d/1Ja8MYsm8xijl-5Tt1IgsvwTZbVwZsKTk/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1YfoZlZAuhzwk1s4JeFddPFFSJ_LXmtci/view?usp=sharing"
                         target="_blank"
                         download
                         rel="noreferrer"
