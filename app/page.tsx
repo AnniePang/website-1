@@ -11,6 +11,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Github, Linkedin, Mail, Download, ExternalLink, ArrowRight } from "lucide-react"
 import { Header } from "@/components/header"
 import { SectionTitle } from "@/components/section-title"
+import { Cloud, IslandEdge, Leaf, Palm } from "@/components/acnh/decor"
+import { IslandRadio } from "@/components/acnh/island-radio"
+import { useIsland } from "@/components/island-provider"
 import { fadeIn, staggerContainer } from "@/lib/animation"
 
 /**
@@ -92,6 +95,8 @@ function SkillCard({ skill }: { skill: string }) {
 }
 
 export default function Home() {
+  const { island } = useIsland()
+
   // Add smooth scrolling for anchor links
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -116,8 +121,23 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section
+        className={
+          island
+            ? "acnh-sky relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+            : "relative bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 pt-32 pb-20 px-4 sm:px-6 lg:px-8"
+        }
+      >
+        {/* Island only: hand-drawn clouds and palms. Purely decorative. */}
+        {island && (
+          <>
+            <Cloud className="pointer-events-none absolute top-24 left-[4%] w-32 text-white/70 dark:text-white/10" />
+            <Cloud className="pointer-events-none absolute top-40 right-[8%] w-24 text-white/55 dark:text-white/10" />
+            <Palm className="pointer-events-none absolute -bottom-2 left-[-1rem] w-28 opacity-90 hidden sm:block" />
+            <Palm className="pointer-events-none absolute -bottom-4 right-[-1.5rem] w-36 opacity-80 hidden lg:block scale-x-[-1]" />
+          </>
+        )}
+        <div className="max-w-7xl mx-auto relative">
           <motion.div
             variants={staggerContainer(0.1, 0.1)}
             initial="hidden"
@@ -126,6 +146,12 @@ export default function Home() {
             className="flex flex-col md:flex-row items-center justify-between gap-8"
           >
             <motion.div variants={fadeIn("right", 0.3)} className="md:w-2/3">
+              {island && (
+                <span className="acnh-tag inline-flex items-center gap-1.5 px-3 py-1 text-sm mb-4">
+                  <Leaf className="w-4 h-4" />
+                  Welcome to the island
+                </span>
+              )}
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Annie Pang</h1>
               <p className="text-lg md:text-2xl text-slate-700 dark:text-slate-300 mb-2">
                 Business Intelligence Engineer | Data Engineer | Data Scientist | Machine Learning Engineer | Software
@@ -170,18 +196,24 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Wave Divider */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="w-full h-[60px] dark:fill-slate-950 fill-white"
-          >
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-          </svg>
-        </div>
+        {/* Section divider: scalloped shoreline on the island, wave otherwise */}
+        {island ? (
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <IslandEdge className="w-full h-[70px]" />
+          </div>
+        ) : (
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              className="w-full h-[60px] dark:fill-slate-950 fill-white"
+            >
+              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+          </div>
+        )}
       </section>
 
       {/* Role Tracks Section */}
@@ -1859,6 +1891,8 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {/* Island only: click-to-play generative ambient radio. Nothing autoplays. */}
+      {island && <IslandRadio />}
     </main>
   )
 }
